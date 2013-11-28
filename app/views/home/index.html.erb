@@ -1,0 +1,20 @@
+<h1>Welcome to TriStar Online Appliance Services</h1>
+
+ 
+<% unless provider_signed_in? -%>
+  <% unless user_signed_in? -%>
+    <p><%= link_to 'Sign up as New Provider', new_provider_registration_path %></p>
+  <p><%= link_to 'Sign in as Provider', new_provider_session_path %></p>
+  <% end -%>
+<% end -%>
+
+<% unless user_signed_in? -%>
+     <% unless provider_signed_in? -%>
+       <p><%= link_to 'Sign up as New User', new_user_registration_path %></p>
+      <p><%= link_to 'Sign in as User', new_user_session_path %></p>
+     <% end -%>
+
+<% end -%>
+
+
+<p>sign in page</p>

@@ -1,0 +1,61 @@
+<% if !@servicerequests.empty? %>
+   
+<h1>
+  <% if user_signed_in? %>
+   <%= current_user.username %> - List of Service Requests
+  <% else %>
+    All open requests for bids 
+  <% end %>
+</h1>
+<table class="request">
+  <thead>
+    <tr>
+      <th>Appliance </th>
+      <th>Brand </th>
+      <th>Warranty </th>
+      <th>ProblemDescription</th>
+      <th>ServiceCtrLoc</th>
+      <th>ServiceByDt</th>
+      <th>BidEndByDt</th>
+      <th>Status</th>
+  <% if user_signed_in? %>
+      <th>WinningBidder </th>
+      <th>Feedback </th>
+  <% end %>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @servicerequests.each do |servicerequest| %>
+      <tr>
+        <td><%= servicerequest.appliance %></td>
+        <td><%= servicerequest.brand %></td>
+        <td><%= servicerequest.warranty %></td>
+        <td><%= servicerequest.problem_desc %></td>
+        <td><%= servicerequest.service_ctr_location %></td>
+        <td><%= servicerequest.service_by %></td>
+        <td><%= servicerequest.bidend %></td>
+        <td><%= servicerequest.status %></td>
+        <% if user_signed_in? %>
+          <td><%= servicerequest.provider_id %></td>
+          <td><%= servicerequest.feedback %></td>
+        <% end %>
+        <td><%= link_to 'Show', servicerequest %></td>
+        <% if user_signed_in? %>
+        <td><%= link_to 'Edit', edit_servicerequest_path(servicerequest) %></td>
+        <td><%= link_to 'Destroy', servicerequest, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        
+        <% else %>
+           <td><%= link_to 'AddBid', edit_servicerequest_path(servicerequest) %></td>
+        <% end %>
+       </tr>
+      
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<% end %>
+ <% if user_signed_in? %>
+       <%= link_to 'New Servicerequest', new_servicerequest_path %>
+ <% end %>

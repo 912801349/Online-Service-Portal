@@ -1,0 +1,12 @@
+ <%= @provuser2.username %>,
+Welcome to TriStar Online Services,
+
+===============================================================
+
+Thank you for submitting your bid for the service of repairing 
+<%= @item %>.  However, your bid was not accepted for this round 
+by the customer <%= @requestuser2.username %>.
+
+Please try again and good luck!
+<%= link_to "View Request", providers_url(@provuser2.username, :host => "localhost:3000") %>
+

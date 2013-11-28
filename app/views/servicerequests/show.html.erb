@@ -1,0 +1,80 @@
+<%= javascript_include_tag "jquery_ujs" %>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Appliance:</strong>
+  <%=h @servicerequest.appliance %>
+</p>
+
+<p>
+  <strong>Brand:</strong>
+  <%=h @servicerequest.brand %>
+</p>
+
+<p>
+  <strong>Warranty:</strong>
+  <%=h @servicerequest.warranty %>
+</p>
+
+<p>
+  <strong>ProblemDescription:</strong>
+  <%=h @servicerequest.problem_desc %>
+</p>
+
+<p>
+  <strong>ServiceCenterLocation:</strong>
+  <%=h @servicerequest.service_ctr_location %>
+</p>
+<p>
+  <strong>ServiceByDate:</strong>
+  <%=h @servicerequest.service_by %>
+</p>
+<p>
+  <strong>Bid_endDt:</strong>
+  <%=h @servicerequest.bidend %>
+</p>
+<p>
+  <strong>Status:</strong>
+  <%=h @servicerequest.status %>
+</p>
+   <p>
+       <strong>WinningServiceProviderId:</strong>
+       <%=h @servicerequest.provider_id %>
+       <% if @servicerequest.status == 'Accepted' %>
+               <% @contact = Provider.find_by_id( @servicerequest.provider_id) %>
+                   <strong>ProviderName:</strong>
+                        <%= @contact.username %>
+                  <strong> Provider Email: </strong>
+                        <%= @contact.email %>
+                  <strong> Provider Phone: </strong>
+                        <%= @contact.phone %>
+
+       <% end %>
+    <p>
+        <strong>Feedback_comment:</strong>
+        <%=h @servicerequest.feedback %>
+    </p>
+<% if @servicerequest.status != 'Accepted' %>
+<ol>
+    <p>
+      <strong>Bids Received:</strong></p> 
+    <% for bid in @servicerequest.bids %>
+       <li>provider: <%=h bid.provider_id %>
+           bidamount:<%=h bid.bidamt %>
+           ProviderComment:<%=h bid.comment %>
+          <% if user_signed_in? %>
+              <%= link_to "Select this provider", servicerequest_path(:servicerequest => {:provider_id => bid.provider_id, :status => 'Accepted'}), :method => :patch, :confirm => "Are you sure you want this provider?" %>
+          <% end %>
+       </li>
+     <% end %>
+</ol>
+<% end %>
+<p>
+     
+     <% if user_signed_in? %>
+         <%= link_to 'Edit', edit_servicerequest_path(@servicerequest) %> |
+         <%= link_to 'Destroy', @servicerequest, :confirm => 'Are you sure?', :method => :delete %> |
+     <% end %>
+     <%= link_to 'Back-viewAll', servicerequests_path %>
+</p>

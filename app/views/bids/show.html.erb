@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+<% if @bid.nil? %>
+<p> 
+    <strong>No Bids on any Service Requests</strong>
+</p>
+<% else %>
+  
+<p>
+  <strong>Servicerequest:</strong>
+  <%= @bid.servicerequest_id %>
+</p>
+<p>
+  <strong>Bidamt:</strong>
+  <%= @bid.bidamt %>
+</p>
+
+<p>
+  <strong>Appliance:</strong>
+  <%= @bid.appliance %>
+</p>
+
+<p>
+  <strong>Provider:</strong>
+  <%= @bid.provider_id %>
+</p>
+<%= link_to 'Edit', edit_bid_path(@bid) %> |
+<% end %>
+<%= link_to 'Back', bids_path %>

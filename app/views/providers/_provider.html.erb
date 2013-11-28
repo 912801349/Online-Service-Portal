@@ -1,0 +1,31 @@
+<%= form_for @provider do |f| %>
+  <% if @provider.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@provider.errors.count, "error") %> prohibited this provider from being saved:</h2>
+
+      <ul>
+      <% @provider.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :Username %>
+    <%= f.text_field :username, :readonly => provider_signed_in? %>
+    <%= f.label :email %>
+    <%= f.text_field :email, :readonly => provider_signed_in? %>
+  </div>
+  <div class="field">
+    <%= f.label :address %>
+    <%= f.text_field :address, :readonly => provider_signed_in? %>
+    <%= f.label :city %>
+    <%= f.text_field :city, :readonly => provider_signed_in? %>
+    <%= f.label :State %>
+    <%= f.text_field :state, :readonly => provider_signed_in? %>
+    <%= f.label :zip %>
+    <%= f.text_field :zip, :readonly => provider_signed_in? %>
+    <%= f.label :phone %>
+    <%= f.text_field :phone, :readonly => provider_signed_in? %>
+  </div>
+<% end %>

@@ -1,0 +1,26 @@
+<div id="new-bid-fields">
+      <%= f.label :provider, "Provider" %>
+       <% if f.object.new_record? %>
+          <%= f.hidden_field :provider_id, :value => current_provider.id %>
+       <% else %>
+          <%= f.text_field :provider_id, :readonly => true %>
+       <% end %>
+      <%= f.hidden_field :servicerequest_id %>
+      <%= f.label :bidamt, "BidAmount" %>
+      <% if f.object.new_record? %>
+                <%= f.text_field :bidamt, :readonly => false  %>
+                <%= f.label :comment, "Comment" %>
+                <%= f.text_area :comment, :rows => 3, :readonly => false %>
+      <% else %>
+                <% if provider_signed_in? %>
+                     <%= f.text_field :bidamt,:readonly => current_provider.id != f.object.provider_id %>
+                     <%= f.label :comment, "Comment" %>
+                     <%= f.text_area :comment, :rows => 3, :readonly => current_provider.id != f.object.provider_id %>
+                <% else %>
+                     <%= f.text_field :bidamt, :readonly => true  %>
+                     <%= f.label :comment, "Comment" %>
+                     <%= f.text_area :comment, :rows => 3, :readonly => true %>
+                <% end %>
+      <% end %>
+</div>
+

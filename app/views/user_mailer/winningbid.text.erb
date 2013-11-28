@@ -1,0 +1,10 @@
+ <%= @provuser.username %>,
+Welcome to TriStar Online Services,
+
+===============================================================
+
+Your bid for service request has been accepted 
+by the customer <%= @requestuser.username %>.
+
+<%= link_to "View Request", providers_url(@provuser.username, :host => "localhost:3000") %>
+

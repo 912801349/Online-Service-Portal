@@ -1,0 +1,61 @@
+<%= form_for @servicerequest do |f| %>
+  <% if @servicerequest.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@servicerequest.errors.count, "error") %> prohibited this servicerequest from being saved:</h2>
+
+      <ul>
+      <% @servicerequest.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="field">
+     <% if user_signed_in? %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+     <% else %>   
+        <%= f.hidden_field :user_id %>
+     <% end %>
+</div> 
+  <div class="field">
+    <%= f.label :Appliance %>
+    <%= f.text_field :appliance, :readonly => provider_signed_in? %>
+    <%= f.label :Brand %>
+    <%= f.text_field :brand, :readonly => provider_signed_in? %>
+    <%= f.label :Warranty %>
+    <%= f.text_field :warranty, :readonly => provider_signed_in? %>
+  </div>
+  <div class="field">
+    <%= f.label :ProblemDescription %>
+    <%= f.text_field :problem_desc, :readonly => provider_signed_in? %>
+    <%= f.label :Service_Center_Location %>
+    <%= f.text_field :service_ctr_location, :readonly => provider_signed_in? %>
+  </div>
+  <div class="field" id="datetimepicker1">
+    <%= f.label :ServiceByDate %>
+    <%= f.text_field :service_by, :readonly => provider_signed_in? %>
+    <%= f.label :Bid_EndDte %>
+    <%= f.text_field :bidend, :readonly => provider_signed_in? %>
+  </div>
+  <div class="field">
+    <%= f.label :status %>
+    <% if f.object.new_record? %>
+    <%= f.text_field :status, :value => 'Open'  %>
+    <% else %>
+    <%= f.text_field :status, :readonly => provider_signed_in? %>
+    <% end %>
+  </div>
+<% if !f.object.new_record? %>
+  <%= f.fields_for :bids do |bidinfo| %>
+      <%= render 'bid_fields', :f => bidinfo %><br />
+  <% end %>  
+<% end %>
+<% if provider_signed_in? %>
+       <p>      <%= link_to_add_fields "Add Bid", f, :bids %>
+      </p>
+<% end %>
+
+<div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

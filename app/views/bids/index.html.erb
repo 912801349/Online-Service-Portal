@@ -1,0 +1,32 @@
+<% if !@bids.empty? %>
+ <h1>Listing bids</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>BidAmt</th>
+      <th>Servicerequest</th>
+      <th>Provider</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bids.each do |bid| %>
+      <tr>
+        <td><%= bid.bidamt %></td>
+        <td><%= bid.servicerequest_id %></td>
+        <td><%= bid.provider_id %></td>
+        <td><%= link_to 'Show', bid %></td>
+        <td><%= link_to 'Edit', edit_bid_path(bid) %></td>
+        <td><%= link_to 'Destroy', bid, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<% end %>
+<%= link_to 'New Bid', new_bid_path %>

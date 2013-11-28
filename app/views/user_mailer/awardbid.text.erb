@@ -1,0 +1,10 @@
+   <%= @requestuser1.username %>
+Welcome to TriStar Online Services,
+ 
+
+===============================================================
+
+Your service request has been awarded to <%= @provuser1.username %>. 
+
+
+<%= link_to "View Request", servicerequest_url(@requestuser1.username, :host => "localhost:3000") %>
