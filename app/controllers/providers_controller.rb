@@ -1,6 +1,6 @@
 class ProvidersController < ApplicationController
   
-     before_action :authenticate_provider!, :only => :index
+ before_action :authenticate_provider!, :only => :index
 
  before_action :set_servicerequest, :only => :show
  

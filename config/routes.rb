@@ -1,7 +1,6 @@
 DeviseExample::Application.routes.draw do
 
   resources :bids
-
   resources :servicerequests
 
   devise_for :providers

@@ -13,13 +13,13 @@
       <th>Appliance </th>
       <th>Brand </th>
       <th>Warranty </th>
-      <th>ProblemDescription</th>
-      <th>ServiceCtrLoc</th>
-      <th>ServiceByDt</th>
-      <th>BidEndByDt</th>
+      <th>Problem Description</th>
+      <th>Service Centre Location</th>
+      <th>Service By Date</th>
+      <th>Bid End By Date</th>
       <th>Status</th>
   <% if user_signed_in? %>
-      <th>WinningBidder </th>
+      <th>Winning Bidder </th>
       <th>Feedback </th>
   <% end %>
     </tr>
@@ -46,7 +46,7 @@
         <td><%= link_to 'Destroy', servicerequest, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         
         <% else %>
-           <td><%= link_to 'AddBid', edit_servicerequest_path(servicerequest) %></td>
+           <td><%= link_to 'Add Bid', edit_servicerequest_path(servicerequest) %></td>
         <% end %>
        </tr>
       
@@ -57,5 +57,5 @@
 <br>
 <% end %>
  <% if user_signed_in? %>
-       <%= link_to 'New Servicerequest', new_servicerequest_path %>
+       <%= link_to 'New Service Request', new_servicerequest_path %>
  <% end %>

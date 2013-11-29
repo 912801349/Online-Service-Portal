@@ -18,20 +18,20 @@
 </p>
 
 <p>
-  <strong>ProblemDescription:</strong>
+  <strong>Problem Description:</strong>
   <%=h @servicerequest.problem_desc %>
 </p>
 
 <p>
-  <strong>ServiceCenterLocation:</strong>
+  <strong>Service Center Location:</strong>
   <%=h @servicerequest.service_ctr_location %>
 </p>
 <p>
-  <strong>ServiceByDate:</strong>
+  <strong>Service By Date:</strong>
   <%=h @servicerequest.service_by %>
 </p>
 <p>
-  <strong>Bid_endDt:</strong>
+  <strong>Bid End Date:</strong>
   <%=h @servicerequest.bidend %>
 </p>
 <p>
@@ -39,11 +39,11 @@
   <%=h @servicerequest.status %>
 </p>
    <p>
-       <strong>WinningServiceProviderId:</strong>
+       <strong>Winning Service ProviderId:</strong>
        <%=h @servicerequest.provider_id %>
        <% if @servicerequest.status == 'Accepted' %>
                <% @contact = Provider.find_by_id( @servicerequest.provider_id) %>
-                   <strong>ProviderName:</strong>
+                   <strong>Provider Name:</strong>
                         <%= @contact.username %>
                   <strong> Provider Email: </strong>
                         <%= @contact.email %>
@@ -52,7 +52,7 @@
 
        <% end %>
     <p>
-        <strong>Feedback_comment:</strong>
+        <strong>Feedback Comments:</strong>
         <%=h @servicerequest.feedback %>
     </p>
 <% if @servicerequest.status != 'Accepted' %>
@@ -60,9 +60,9 @@
     <p>
       <strong>Bids Received:</strong></p> 
     <% for bid in @servicerequest.bids %>
-       <li>provider: <%=h bid.provider_id %>
-           bidamount:<%=h bid.bidamt %>
-           ProviderComment:<%=h bid.comment %>
+       <li>Provider: <%=h bid.provider_id %>
+           Bid Amount:<%=h bid.bidamt %>
+           Provider Comment:<%=h bid.comment %>
           <% if user_signed_in? %>
               <%= link_to "Select this provider", servicerequest_path(:servicerequest => {:provider_id => bid.provider_id, :status => 'Accepted'}), :method => :patch, :confirm => "Are you sure you want this provider?" %>
           <% end %>
@@ -76,5 +76,5 @@
          <%= link_to 'Edit', edit_servicerequest_path(@servicerequest) %> |
          <%= link_to 'Destroy', @servicerequest, :confirm => 'Are you sure?', :method => :delete %> |
      <% end %>
-     <%= link_to 'Back-viewAll', servicerequests_path %>
+     <%= link_to 'Back-ViewAll', servicerequests_path %>
 </p>

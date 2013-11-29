@@ -1,7 +1,7 @@
 <%= form_for @servicerequest do |f| %>
   <% if @servicerequest.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@servicerequest.errors.count, "error") %> prohibited this servicerequest from being saved:</h2>
+      <h2><%= pluralize(@servicerequest.errors.count, "error") %> prohibited this Service Request from being saved:</h2>
 
       <ul>
       <% @servicerequest.errors.full_messages.each do |msg| %>
@@ -20,20 +20,28 @@
   <div class="field">
     <%= f.label :Appliance %>
     <%= f.text_field :appliance, :readonly => provider_signed_in? %>
+  </div>
+  <div class="field">
     <%= f.label :Brand %>
     <%= f.text_field :brand, :readonly => provider_signed_in? %>
+  </div>
+  <div class="field">
     <%= f.label :Warranty %>
     <%= f.text_field :warranty, :readonly => provider_signed_in? %>
   </div>
   <div class="field">
     <%= f.label :ProblemDescription %>
     <%= f.text_field :problem_desc, :readonly => provider_signed_in? %>
+  </div>
+  <div class="field">
     <%= f.label :Service_Center_Location %>
     <%= f.text_field :service_ctr_location, :readonly => provider_signed_in? %>
   </div>
   <div class="field" id="datetimepicker1">
     <%= f.label :ServiceByDate %>
     <%= f.text_field :service_by, :readonly => provider_signed_in? %>
+  </div>
+  <div class="field">
     <%= f.label :Bid_EndDte %>
     <%= f.text_field :bidend, :readonly => provider_signed_in? %>
   </div>

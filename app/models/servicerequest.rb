@@ -1,4 +1,27 @@
 class Servicerequest < ActiveRecord::Base
+   
+   validates :appliance, :problem_desc, :service_ctr_location, :service_by, :bidend, :presence => true 
+
+   validate :service_by_greater_than_currentdate, :bidend_greater_than_currentdate, :bidend_less_than_servicebydate
+    
+	  def service_by_greater_than_currentdate
+	    if service_by.present? && service_by < Date.today
+	      errors.add(:service_by, " date should not be less than current date.")
+	    end
+	  end
+
+	  def bidend_greater_than_currentdate
+	    if bidend.present? && bidend < Date.today
+	      errors.add(:bidend, " date should not be less than current date.")	
+	    end
+	  end
+
+	  def bidend_less_than_servicebydate
+	    if service_by.present? && bidend.present? && bidend > service_by
+	      errors.add(:bidend, " date should be less than or equals to Service By Date.")  	
+	    end
+	  end  
+ 
    belongs_to :user
    belongs_to :provider
    has_many :bids, :dependent => :destroy

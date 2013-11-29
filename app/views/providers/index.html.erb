@@ -2,7 +2,7 @@
 <h2>
    <div>
       Welcome to
-   <%= current_provider.username %> Service Pending Bid List
+   <%= current_provider.username %> Service Bid List
    </div>
 </h2>
 <% if !@myrequest3.empty? %>   
@@ -14,13 +14,13 @@
       <th>Appliance </th>
       <th>Brand </th>
       <th>Warranty </th>
-      <th>ProblemDescription</th>
-      <th>ServiceCtrLoc</th>
-      <th>ServiceByDt</th>
-      <th>BidEndByDt</th>
-      <th>BidAmount</th>
+      <th>Problem Description</th>
+      <th>Service Centre Location</th>
+      <th>Service By Date</th>
+      <th>Bid End By Date</th>
+      <th>Bid Amount</th>
       <th>Status</th>
-      <th>BidAwardedTo</th>
+      <th>Bid Awarded To</th>
     </tr>
   </thead>
 
@@ -50,5 +50,5 @@
   </tbody>
 </table>
 <% else %>
-    No service list.
+    No Service List.
 <% end %>
