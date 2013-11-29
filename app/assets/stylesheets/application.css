@@ -46,9 +46,7 @@ a img {
 }
 
 a {
-  //color: white;
   color: #FFFF00;
-  //color: #000000;
   font-weight: bold;
 }
 
@@ -62,7 +60,7 @@ a {
   height: 200%;
   width: 85%;
   margin: 0 auto;
-  background-color: #58ACFA;
+  background-color: #045FB4;
   padding: 20px 40px;
   border: solid 2px #CCCCCC;
   margin-top: 20px;
