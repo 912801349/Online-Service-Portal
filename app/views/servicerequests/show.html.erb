@@ -60,9 +60,9 @@
     <p>
       <strong>Bids Received:</strong></p> 
     <% for bid in @servicerequest.bids %>
-       <li>Provider: <%=h bid.provider_id %>
-           Bid Amount:<%=h bid.bidamt %>
-           Provider Comment:<%=h bid.comment %>
+       <li><b>Provider:</b> <%=h bid.provider_id %>
+           <b>Bid Amount:</b><%=h bid.bidamt %>
+           <b>Provider Comment:</b><%=h bid.comment %>
           <% if user_signed_in? %>
               <%= link_to "Select this provider", servicerequest_path(:servicerequest => {:provider_id => bid.provider_id, :status => 'Accepted'}), :method => :patch, :confirm => "Are you sure you want this provider?" %>
           <% end %>

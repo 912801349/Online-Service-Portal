@@ -1,6 +1,6 @@
 class DevelopmentMailInterceptor
-   def self.delivering_email(message)
-        message.subject = "[#{message.to}] #{message.subject}"
-        message.to = "rubyrails88@gmail.com"
-   end
+   #def self.delivering_email(message)
+        # message.subject = "[#{message.to}] #{message.subject}"
+        # message.to = "bhavanacse@gmail.com"
+   #end
 end

@@ -1,10 +1,8 @@
-   <%= @requestuser1.username %>
+Dear <%= @requestuser1.username %>
 Welcome to TriStar Online Services,
- 
+==================================
+==================================
 
-===============================================================
+You have selected <%= @provuser1.username %> as provider for your service request. 
 
-Your service request has been awarded to <%= @provuser1.username %>. 
-
-
-<%= link_to "View Request", servicerequest_url(@requestuser1.username, :host => "localhost:3000") %>
+Please login into "TriStar Online Appliance Service" portal for more information.

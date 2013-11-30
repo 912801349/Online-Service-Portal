@@ -57,19 +57,19 @@ class ServicerequestsController < ApplicationController
   def update
     respond_to do |format|
       if @servicerequest.update_attributes(servicerequest_params)
-        format.html { redirect_to @servicerequest, notice: 'Servicerequest was successfully updated.' }
+        format.html { redirect_to @servicerequest, notice: 'Service Request was successfully updated.' }
         format.json { head :no_content }
         if  @servicerequest.provider_id?
               @provider = Provider.find_by_id(@servicerequest.provider_id) 
                UserMailer.winningbid(@provider,current_user).deliver
                UserMailer.awardbid(@provider,current_user).deliver
-               @servicerequest.bids.each do |p|
-	          unless p.provider_id == @provider.id
-                     @nonwin = Provider.find_by_id(p.provider_id)
-                     UserMailer.losingbid(@nonwin, current_user, @servicerequest.appliance).deliver
-                  end
-               end
-                 flash.alert = "email notification already sent to provider and to you as confirmation"
+               # @servicerequest.bids.each do |p|
+	         # unless p.provider_id == @provider.id
+                  #   @nonwin = Provider.find_by_id(p.provider_id)
+                   #  UserMailer.losingbid(@nonwin, current_user, @servicerequest.appliance).deliver
+                 # end
+              # end
+                 flash.alert = "Email notification already sent to you and to your selected Service Provider as confirmation."
 		# flash.notice = "email also sent to you as confirmation"
          end 
 

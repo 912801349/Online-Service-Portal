@@ -1,10 +1,11 @@
- <%= @provuser.username %>,
+Dear <%= @provuser.username %>,
 Welcome to TriStar Online Services,
+===================================
+===================================
 
-===============================================================
+Your bid for service request has been accepted by the customer <%= @requestuser.username %>.
 
-Your bid for service request has been accepted 
-by the customer <%= @requestuser.username %>.
+Please login into "TriStar Online Appliance Service" portal for more information.
 
-<%= link_to "View Request", providers_url(@provuser.username, :host => "localhost:3000") %>
+
 
