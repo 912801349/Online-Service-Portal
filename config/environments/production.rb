@@ -90,4 +90,5 @@ DeviseExample::Application.configure do
     enable_starttls_auto: true,
     user_name: "tristaronlineservice",
     password: "onlinetristar"
+  }
 end
